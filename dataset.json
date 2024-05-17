@@ -1,0 +1,202 @@
+[
+  {
+    "treeNumber": "1",
+    "trait": "roots",
+    "score": 3
+  },
+  {
+    "treeNumber": "1",
+    "trait": "trunk",
+    "score": 4
+  },
+  {
+    "treeNumber": "1",
+    "trait": "crown",
+    "score": 8
+  },
+  {
+    "treeNumber": "1",
+    "trait": "fruits",
+    "score": 4
+  },
+  {
+    "treeNumber": "2",
+    "trait": "roots",
+    "score": 5
+  },
+  {
+    "treeNumber": "2",
+    "trait": "trunk",
+    "score": 3
+  },
+  {
+    "treeNumber": "2",
+    "trait": "crown",
+    "score": 9
+  },
+  {
+    "treeNumber": "2",
+    "trait": "fruits",
+    "score": 3
+  },
+  {
+    "treeNumber": "3",
+    "trait": "roots",
+    "score": 4
+  },
+  {
+    "treeNumber": "3",
+    "trait": "trunk",
+    "score": 4
+  },
+  {
+    "treeNumber": "3",
+    "trait": "crown",
+    "score": 8
+  },
+  {
+    "treeNumber": "3",
+    "trait": "fruits",
+    "score": 4
+  },
+  {
+    "treeNumber": "4",
+    "trait": "roots",
+    "score": 4
+  },
+  {
+    "treeNumber": "4",
+    "trait": "trunk",
+    "score": 4
+  },
+  {
+    "treeNumber": "4",
+    "trait": "crown",
+    "score": 6
+  },
+  {
+    "treeNumber": "4",
+    "trait": "fruits",
+    "score": 6
+  },
+  {
+    "treeNumber": "5",
+    "trait": "roots",
+    "score": 6
+  },
+  {
+    "treeNumber": "5",
+    "trait": "trunk",
+    "score": 2
+  },
+  {
+    "treeNumber": "5",
+    "trait": "crown",
+    "score": 11
+  },
+  {
+    "treeNumber": "5",
+    "trait": "fruits",
+    "score": 6
+  },
+  {
+    "treeNumber": "6",
+    "trait": "roots",
+    "score": 4
+  },
+  {
+    "treeNumber": "6",
+    "trait": "trunk",
+    "score": 7
+  },
+  {
+    "treeNumber": "6",
+    "trait": "crown",
+    "score": 8
+  },
+  {
+    "treeNumber": "6",
+    "trait": "fruits",
+    "score": 5
+  },
+  {
+    "treeNumber": "7",
+    "trait": "roots",
+    "score": 5
+  },
+  {
+    "treeNumber": "7",
+    "trait": "trunk",
+    "score": 3
+  },
+  {
+    "treeNumber": "7",
+    "trait": "crown",
+    "score": 7
+  },
+  {
+    "treeNumber": "7",
+    "trait": "fruits",
+    "score": 4
+  },
+  {
+    "treeNumber": "8",
+    "trait": "roots",
+    "score": 9
+  },
+  {
+    "treeNumber": "8",
+    "trait": "trunk",
+    "score": 4
+  },
+  {
+    "treeNumber": "8",
+    "trait": "crown",
+    "score": 8
+  },
+  {
+    "treeNumber": "8",
+    "trait": "fruits",
+    "score": 4
+  },
+  {
+    "treeNumber": "9",
+    "trait": "roots",
+    "score": 6
+  },
+  {
+    "treeNumber": "9",
+    "trait": "trunk",
+    "score": 7
+  },
+  {
+    "treeNumber": "9",
+    "trait": "crown",
+    "score": 7
+  },
+  {
+    "treeNumber": "9",
+    "trait": "fruits",
+    "score": 9
+  },
+  {
+    "treeNumber": "10",
+    "trait": "roots",
+    "score": 2
+  },
+  {
+    "treeNumber": "10",
+    "trait": "trunk",
+    "score": 5
+  },
+  {
+    "treeNumber": "10",
+    "trait": "crown",
+    "score": 7
+  },
+  {
+    "treeNumber": "10",
+    "trait": "fruits",
+    "score": 4
+  }
+]
