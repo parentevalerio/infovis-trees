@@ -2,7 +2,7 @@ const width = 3000; // Chart's dimensions
 const height = 800;
 const marginLeft = 40; // The space between the left side of the screen and the chart
 const marginRight = 10;
-const marginTop = 10;
+const marginTop = 20;
 const marginBottom = 30;
 
 function chart(data) {
@@ -170,7 +170,7 @@ function chart(data) {
           })
           .on("click", reorderOnClick);
 
-        function singleRootLinePlacement(slope) {
+        function singleRootPlacement(slope) {
           rootsSvg
           .append("line")
             .attrs({
@@ -181,9 +181,9 @@ function chart(data) {
             });
         }
 
-        singleRootLinePlacement((x.bandwidth() / 2));
-        singleRootLinePlacement((x.bandwidth() / 2) + 80);
-        singleRootLinePlacement((x.bandwidth()) - (x.bandwidth()/2 + 80));
+        singleRootPlacement((x.bandwidth() / 2));
+        singleRootPlacement((x.bandwidth() / 2) + 80);
+        singleRootPlacement((x.bandwidth()) - (x.bandwidth()/2 + 80));
       }
     );
 
