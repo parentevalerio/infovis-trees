@@ -84,20 +84,22 @@ function chart(data) {
    * Update all the forms based on the new x scale
    */
   function updateForms(){
+    const animationDuration = 1500;
+
     svg.selectAll(".trunk")
-      .transition().duration(500)
+      .transition().duration(animationDuration)
       .attr("x", d => x(d.data[0]) + x.bandwidth() / 2.18)
 
     svg.selectAll(".roots")
-      .transition().duration(500)
+      .transition().duration(animationDuration)
       .attr("x", d => x(d.data[0]) + 1.5)
 
     svg.selectAll(".crown")
-      .transition().duration(500)
+      .transition().duration(animationDuration)
       .attr("cx", d => x(d.data[0]) + x.bandwidth() / 2)
 
     svg.selectAll(".fruits")
-      .transition().duration(500)
+      .transition().duration(animationDuration)
       .attr("x", d => x(d.data[0]))
   }
 
