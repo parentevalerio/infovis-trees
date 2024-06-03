@@ -1,11 +1,12 @@
-const width = 3000; // Chart's dimensions
-const height = 800;
-const marginLeft = 40; // The space between the left side of the screen and the chart
-const marginRight = 10;
-const marginTop = 20;
+const width = 5000; // Chart's dimensions
+const height = 900;
+const marginLeft = 100; // The space between the left side of the screen and the chart
+const marginRight = 100;
+const marginTop = 100;
 const marginBottom = 30;
 
 function chart(data) {
+
   /**
    * In order to perform a stacked series such that:
    * each individual element of series refers to a trait
@@ -36,8 +37,8 @@ function chart(data) {
    * 0 and the maximum value of the series.
    */
   const y = d3.scaleLinear()
-    .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
-    .rangeRound([height - marginBottom, marginTop]);
+      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
+      .rangeRound([height - marginBottom, marginTop]);
 
   /**
    * Create a new ordinal scale (to map values on a descreet scale) of colors,
@@ -88,7 +89,7 @@ function chart(data) {
 
     svg.selectAll(".trunk")
       .transition().duration(animationDuration)
-      .attr("x", d => x(d.data[0]) + x.bandwidth() / 2.18)
+      .attr("x", d => x(d.data[0]) + x.bandwidth() / 2.14)
 
     svg.selectAll(".roots")
       .transition().duration(animationDuration)
@@ -201,10 +202,10 @@ function chart(data) {
       "stroke-width": "5",
       "stroke": "#502204",
       "class": "trunk",
-      "x": d => x(d.data[0]) + x.bandwidth() / 2.18,
+      "x": d => x(d.data[0]) + x.bandwidth() / 2.14,
       "y": d => y(d[1] + (groundLevelHeight - d.data[1].get("roots").score)),
       "height": d => y(d[0]) - y(d[1]),
-      "width": x.bandwidth() / 12
+      "width": x.bandwidth() / 15
     })
     .on("click", reorderOnClick);
 
@@ -223,11 +224,12 @@ function chart(data) {
       "stroke-width": "6",
       "stroke": "darkgreen",
       "class": "crown",
+      "treeNumber": d => d.data[0],
       "cx": d => x(d.data[0]) + x.bandwidth() / 2,
-      // Tree height (roots + trunk) + major radius of ellipse + lifted heigth to reach ground level
+      // Tree height (crown exluded) + major radius of ellipse + lifted heigth to reach ground level
       "cy": d => y((d[0] + (d[1] - d[0]) / (cCrown * pi)) + (groundLevelHeight - d.data[1].get("roots").score)),
-      "ry": d => (2 + (y(d[0]) - y(d[1])) / (cCrown * pi))^ flanneryPow,
-      "rx": d => (((y(d[0]) - y(d[1]))*0.8)/ (cCrown * pi))^ flanneryPow
+      "ry": d => ((y(d[0]) - y(d[1])) / (cCrown * pi))^ flanneryPow,
+      "rx": d => (((y(d[0]) - y(d[1]))*(0.7))/ (cCrown * pi))^ flanneryPow
     })
     .on("click", reorderOnClick);
 
@@ -256,7 +258,10 @@ function chart(data) {
               "stroke-width": "3",
               "stroke": "tomato",
               "fill": "orange",
-              "cx": (x.bandwidth() / xPlacement),
+              "cx": d => {
+                  // find the value rx of the corresponding crown in order to bound the placement to a proper value
+                  var xSpace = document.querySelector('[treeNumber="'+ d.data[0] +'"]').getAttribute("rx");
+                  return x.bandwidth()/2 + (xSpace / xPlacement)},
               "cy": d => {
                 var rootsHeight = d.data[1].get("roots").score;
                 var baseHeight = ((d.data[1].get("trunk").score + rootsHeight) + (groundLevelHeight - rootsHeight));
@@ -267,8 +272,8 @@ function chart(data) {
             })
         }
 
-        singleFruitPlacement(3, 1/4);
-        singleFruitPlacement(2.5, 4/5);
+        singleFruitPlacement(-3, 1/4);
+        singleFruitPlacement(-2.5, 4/5);
         singleFruitPlacement(1.5, 2/4);
       }
     );
