@@ -7,6 +7,12 @@ const marginBottom = 30;
 
 function chart(data) {
 
+  var maxScore = d3.max(data, x => x.score);
+  var dataScale = d3.scaleLinear()
+      .domain([1,maxScore])
+      .range([1,15]);
+  data.map(x => {return x.score = dataScale(x.score)});
+
   /**
    * In order to perform a stacked series such that:
    * each individual element of series refers to a trait
@@ -26,8 +32,9 @@ function chart(data) {
    * set the domain of it, group the data for treeNumber and order (decreasingly)
    * the groups by the sum of every value of each tree individual trait.
    */
+  var sortedGroups = d3.groupSort(data, D => -d3.sum(D, d => d.score), d => d.treeNumber);
   var x = d3.scaleBand()
-    .domain(d3.groupSort(data, D => -d3.sum(D, d => d.score), d => d.treeNumber))
+    .domain(sortedGroups)
     .range([marginLeft, width - marginRight])
     .padding(0.01);
 
@@ -36,8 +43,11 @@ function chart(data) {
    * set the domain interval between
    * 0 and the maximum value of the series.
    */
+  var maxRoot = d3.max(data.filter(d => d.trait === "roots").map(d => d.score));
+  var maxTree = sortedGroups[0];
+  var maxTreeValues =d3.filter(data, d => d.treeNumber == maxTree & d.trait!="roots");
   const y = d3.scaleLinear()
-      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))])
+      .domain([0, d3.sum(maxTreeValues, d => d.score)+maxRoot])
       .rangeRound([height - marginBottom, marginTop]);
 
   /**
@@ -126,7 +136,7 @@ function chart(data) {
   const crowns = series.filter(d => form(d.key) === "ellipse");
   const fruits = series.filter(d => form(d.key) === "circle");
 
-  var groundLevelHeight = d3.max(data.filter(d => d.trait === "roots").map(d => d.score));
+  var groundLevelHeight = maxRoot;
 
   const sky = svg.append("rect")
     .attrs({
